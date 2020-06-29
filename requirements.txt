@@ -9,7 +9,7 @@ charts==0.4.6
 defusedxml==0.6.0
 dj-database-url==0.4.2
 dj-stripe==2.2.3
-Django==2.2.10
+Django==2.2.13
 django-admin-charts==0.17.0
 django-allauth==0.39.1
 django-bower==5.2.0
