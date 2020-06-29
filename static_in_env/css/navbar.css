@@ -1,0 +1,10 @@
+.logoContainer{
+    height: 40px;
+    width: 150px;
+    margin-right: 20px;
+}
+
+.logoImg{
+    height: inherit;
+    object-fit: unset;
+}

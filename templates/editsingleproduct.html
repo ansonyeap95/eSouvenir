@@ -1,0 +1,184 @@
+{% extends "sellerbase.html" %}
+
+{% block content %}
+<main>
+    <div class="container">
+
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
+
+            <!-- Navbar brand -->
+
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+
+                <!-- Links -->
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/seller/home">My Products
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/seller/edit">Add Inventory
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/seller/report">Sales Report
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+              <a class="nav-link" href="/seller/notification">Notification
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+
+
+
+                </ul>
+                <!-- Links -->
+
+
+            </div>
+            <!-- Collapsible content -->
+
+        </nav>
+        <!--/.Navbar-->
+
+        <!--Section: Products v.3-->
+         <div class="container dark-grey-text mt-5">
+
+        <!--Grid row-->
+        <div class="row wow fadeIn">
+
+            <!--Grid column-->
+            <div class="col-md-6 mb-4">
+
+                <img src="{{ object.image.url }}" class="img-fluid" alt="">
+
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-6 mb-4">
+
+                <!--Content-->
+                <div class="p-4">
+
+                    <div class="mb-3">
+                        <a href="">
+                            <span class="badge purple mr-1">{{ object.get_category_display }}</span>
+                        </a>
+                        <h4> {{ item.seller }} </h4>
+                    </div>
+
+                    <p class="lead">
+                        {% if object.discount_price %}
+                        <span class="mr-1">
+                <del>RM{{ object.price }}</del>
+              </span>
+                        <span>RM{{ object.discount_price }}</span>
+                        {% else %}
+                        <span>RM{{ object.price }}</span>
+                        {% endif %}
+                    </p>
+
+                    <p class="lead font-weight-bold">Description</p>
+
+                    <p>{{ object.description }}</p>
+
+                    {% comment %}
+                    <form class="d-flex justify-content-left">
+                        <!-- Default input -->
+                        <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
+                        <button class="btn btn-primary btn-md my-0 p" type="submit">
+                            Add to cart
+                            <i class="fas fa-shopping-cart ml-1"></i>
+                        </button>
+
+                    </form>
+                    {% endcomment %}
+                    {% if item.seller.email == sellerEmail %}
+                    <a href="edit/{{item.id}}" class="btn btn-primary btn-md my-0 p">
+                        Edit Product
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <a href="delete/{{item.id}}" class="btn btn-danger btn-md my-0 p">
+                        Remove Product
+                        <i class="fa fa-trash"></i>
+                    </a>
+                    {% endif %}
+
+                </div>
+                <!--Content-->
+
+
+            </div>
+            <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+
+        <hr>
+
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center wow fadeIn">
+
+            <!--Grid column-->
+
+            <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+
+        <!--Grid row-->
+        <div class="row wow fadeIn">
+
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-12 mb-4">
+
+
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-4">
+
+
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-4">
+
+
+            </div>
+            <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+
+    </div>
+
+        <!--Section: Products v.3-->
+
+        <!--Pagination-->
+
+
+    </div>
+</main>
+
+{% endblock content %}
+
+

@@ -1,0 +1,78 @@
+{% extends "sellerbase.html" %}
+
+{% block content %}
+<main>
+    <div class="container">
+
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
+
+            <!-- Navbar brand -->
+
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+
+                <!-- Links -->
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/seller/home">My Products
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/seller/edit">Add Inventory
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/seller/report">Sales Report
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                     <li class="nav-item">
+              <a class="nav-link" href="/seller/notification">Notification
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+
+
+
+
+                </ul>
+                <!-- Links -->
+
+
+            </div>
+            <!-- Collapsible content -->
+
+        </nav>
+        <!--/.Navbar-->
+
+        <!--Section: Products v.3-->
+      <h1>Product Delete</h1>
+<form method="post">{% csrf_token %}
+    Are you sure you want to delete "{{ object }}" ?
+    <input type="submit" value="Confirm" />
+</form>
+
+
+        <!--Section: Products v.3-->
+
+        <!--Pagination-->
+
+
+    </div>
+</main>
+
+{% endblock content %}
+
+

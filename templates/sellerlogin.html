@@ -1,0 +1,44 @@
+{% extends "account/base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+  <main>
+    <div class="container">
+      <section class="mb-4">
+        <div class="row wow fadeIn">
+          <div class='col-6 offset-3'>
+          <h1>{% trans "Seller Login In" %}</h1>
+          <p>If you have no an account yet, then please
+          ask admin to get the new seller account first.</p>
+              <form method="POST">   {% csrf_token %}
+                  {% if error == 1 %}
+                  <span style="color:red;">Email or Password is incorrect</span>
+                  {% endif %}
+              <p>Email* </p>
+              <div class>
+                  <input type="email" name="seller_email" placeholder="Email" autofocus="autofocus" maxlength="150" class="textinput textInput form-control" value="{{ seller.email }}" required="" id="seller_email">
+              </div>
+              <p>Password* </p>
+              <div class>
+                  <input type="password" name="seller_password" placeholder="Password" autofocus="autofocus" maxlength="150" class="textinput textInput form-control" value="{{ seller.password }}" required="" id="seller_password">
+              </div>
+
+              <button id="sellerLoginBtn" type="submit" class="btn btn-primary" href="#">{% trans "Login In" %}</button>
+                  </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>
+    $("#sellerLoginBtn").click(function(){
+
+    });
+
+</script>
+
+{% endblock %}

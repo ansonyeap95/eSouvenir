@@ -1,0 +1,43 @@
+.editProductForm{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.editProductForm .errorlist {
+    font-size: 12px;
+    margin-bottom: 5px;
+    padding:0;
+    position: absolute;
+    bottom: -25px;
+    right: 10px;
+}
+
+.editProductForm .errorlist li{
+    list-style-type: none;
+    color: red;
+}
+
+.editProductForm .errorlist li:before{
+    content: '*';
+}
+
+.editProductForm input, .editProductForm select{
+    height:30px;
+    width:100%
+}
+
+.editProductForm textarea{
+    width:100%
+}
+
+.imageInputContainer input{
+    border: solid 1px black;
+    border-radius: 3px;
+}
+
+.submitBtn{
+    margin-top:10px !important;
+    width: auto;
+    padding: 5px 30px !important;
+    border-radius: 3px;
+}

@@ -1,0 +1,41 @@
+.footerContainer{
+    display: flex;
+    padding: 10px;
+}
+
+.contactUsTxt{
+    font-size: large;
+    font-weight: 500;
+}
+
+.horizontalLine{
+    display:none;
+}
+
+.rightDivision{
+    text-align:right;
+    align-self: flex-end;
+}
+
+@media screen and (max-width: 767px) {
+    .footerContainer{
+        display: block;
+    }
+
+    .leftDivision{
+        text-align:center;
+    }
+
+    .contactUsTxt{
+        font-weight: 400;
+    }
+
+    .horizontalLine{
+        display:block;
+        margin: 5px 0;
+    }
+
+    .rightDivision{
+        text-align:center;
+    }
+}

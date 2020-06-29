@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static  %}
+{% block content %}
+<div class="container">
+<!--Navbar-->
+      <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3">
+
+        <!-- Navbar brand -->
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+          aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+
+          <!-- Links -->
+          <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/">Best Seller
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+
+            {% if userLogin %}
+            <li class="nav-item">
+              <a class="nav-link" href="/purchasehistory">{{ request.user.username }}
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            {% endif %}
+
+          {% for category in category_list %}
+            <li class="nav-item active">
+              <a class="nav-link" href="/category/{{ category.slug }}/">{{ category }}</a>
+            </li>
+            {% endfor %}
+
+          </ul>
+          <!-- Links -->
+
+
+        </div>
+        <!-- Collapsible content -->
+
+      </nav>
+      <!--/.Navbar-->
+<br>
+{% if sub_categories %}
+    <h3>Sub Categories</h3>
+    {% for i in sub_categories %}
+        <a href="{{ i.slug }}"> {{ i.name }} </a>
+    {% endfor %}
+{% endif %}
+
+
+    <section class="text-center mb-4">
+
+        <div class="row wow fadeIn">
+
+    {% for item in item_set %}
+    <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4"  style= "display: flex; max-height: 400px; max-width:250; ">
+
+            <div class="card itemCard">
+
+              <div class="view overlay">
+                <img src="{{ item.image.url }}" class="itemImg card-img-top">
+                <a href="{{ item.get_absolute_url }}">
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+
+              <div class="card-body text-center">
+                <a class="grey-text">
+                  <h5>{{ item.seller }}</h5>
+                </a>
+                <a href="" class="grey-text">
+                  <h5>{{ item.get_category_display }}</h5>
+                </a>
+                <h5>
+                  <strong>
+                    <a href="{{ item.get_absolute_url }}" class="dark-grey-text">{{ item.title }}
+                      <span class="badge badge-pill {{ item.get_label_display }}-color">NEW</span>
+                    </a>
+                  </strong>
+                </h5>
+
+                <h4 class="font-weight-bold blue-text">
+                  <strong>RM
+                  {% if item.discount_price %}
+                  {{ item.discount_price }}
+                  {% else %}
+                  {{ item.price }}
+                  {% endif %}
+                  </strong>
+                </h4>
+
+              </div>
+
+            </div>
+
+          </div>
+{% endfor %}
+
+    </div>
+
+      </section>
+    <!-- Recommendation floating-->
+
+</div>
+{% endblock %}

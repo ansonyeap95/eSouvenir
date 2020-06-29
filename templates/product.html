@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <main class="mt-5 pt-4">
+    <div class="container dark-grey-text mt-5">
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <img src="{{ object.image.url }}" class="img-fluid" alt="">
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <!--Content-->
+          <div class="p-4">
+
+            <div class="lead font-weight-bold">{{ object.title }}</div>
+
+            <div>
+              <a href="">
+                <span class="badge purple mr-1">{{ object.category }}</span>
+              </a>
+            </div>
+
+            <div class="lead" style="margin: 10px 0;">
+              {% if object.discount_price %}
+              <span class="mr-1">
+                <del>RM{{ object.price }}</del>
+              </span>
+              <span>RM{{ object.discount_price }}</span>
+              {% else %}
+              <span>RM{{ object.price }}</span>
+              {% endif %}
+            </div>
+
+            <div class="lead font-weight-bold">Description</div>
+
+            <div style="height:130px; overflow:auto; margin-bottom:10px;">{{ object.description }}</div>
+
+            {% comment %} <form class="d-flex justify-content-left">
+              <!-- Default input -->
+              <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
+              <button class="btn btn-primary btn-md my-0 p" type="submit">
+                Add to cart
+                <i class="fas fa-shopping-cart ml-1"></i>
+              </button>
+
+            </form> {% endcomment %}
+            <a href="{{ object.get_add_to_cart_url }}" style="margin: 10px 0 !important;" class="btn btn-primary btn-md my-0 p">
+              Add to cart
+              <i class="fas fa-shopping-cart ml-1"></i>
+            </a>
+            <a href="{{ object.get_remove_from_cart_url }}" style="margin: 0;" class="btn btn-danger btn-md my-0 p">
+              Remove from cart
+            </a>
+
+          </div>
+          <!--Content-->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <hr>
+
+      <!--Grid row-->
+      <div class="row d-flex justify-content-center wow fadeIn">
+
+        <!--Grid column-->
+
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-12 mb-4">
+
+
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4">
+
+
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4">
+
+
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+    </div>
+
+    <!-- Botton Recommendation List-->
+    <div class="row d-flex justify-content-center wow fadeIn">
+      <div class="col-md-6 text-center">
+
+          <h4 class="my-4 h4">You may also like</h4>
+
+        </div>
+      </div>
+    <section class="text-center mb-4">
+
+      <div class="row wow fadeIn">
+
+        {% for item in similar %}
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4"  style= "display: flex; align-content: center; max-height: 400px; max-width:100; ">
+          <div class="card itemCard">
+
+            <div class="view overlay">
+
+              <img src="{{ item.image.url }}" class="itemImg card-img-top">
+              <a href="{{ item.get_absolute_url }}">
+                <div class="mask rgba-white-slight"></div>
+
+              </a>
+            </div>
+
+            <div class="card-body text-center">
+              <a class="grey-text">
+                <h5>{{ item.seller }}</h5>
+              </a>
+              <a href="" class="grey-text">
+                <h5>{{ item.get_category_display }}</h5>
+              </a>
+              <h5>
+                <strong>
+                  <a href="{{ item.get_absolute_url }}" class="dark-grey-text">{{ item.title }}
+                    <span class="badge badge-pill {{ item.get_label_display }}-color">NEW</span>
+                  </a>
+                </strong>
+              </h5>
+
+              <h4 class="font-weight-bold blue-text">
+                <strong>RM
+                {% if item.discount_price %}
+                {{ item.discount_price }}
+                {% else %}
+                {{ item.price }}
+                {% endif %}
+                </strong>
+              </h4>
+
+            </div>
+
+          </div>
+
+        </div>
+        {% endfor %}
+      </div>
+
+    </section>
+    <!-- Botton Recommendation List End-->
+  </main>
+
+{% endblock content %}

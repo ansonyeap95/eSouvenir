@@ -1,0 +1,9 @@
+#carouselIndicators{
+    height: 200px;
+}
+
+#carouselIndicators img {
+    object-fit: unset;
+    height: inherit;
+}
+

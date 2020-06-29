@@ -1,0 +1,124 @@
+{% extends "sellerbase.html" %}
+
+{% block content %}
+  <main>
+    <div class="container">
+
+      <!--Navbar-->
+      <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
+
+        <!-- Navbar brand -->
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+          aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+
+          <!-- Links -->
+          <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item">
+              <a class="nav-link" href="/seller/home">My Products
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/seller/edit">Add Inventory
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/seller/report">Sales Report
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+
+            <li class="nav-item active">
+              <a class="nav-link" href="/seller/notification">Notification
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+
+          </ul>
+          <!-- Links -->
+
+
+        </div>
+        <!-- Collapsible content -->
+
+      </nav>
+      <!--/.Navbar-->
+
+      <!--Section: Products v.3-->
+      <section class="text-center mb-4">
+
+        <div class="row wow fadeIn ">
+          <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Order ID</th>
+                <th scope="col">Customer</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!--Loop here-->
+              {% for orders in orderlist %}
+              <tr>
+                <td><a id="orderid" href="{{ orders.get_order_detail_by_seller }}" style="display:block;">{{orders.id}}</a></td>
+                <td><a id="orderid" href="{{ orders.get_order_detail_by_seller }}" style="display:block">{{orders.user}}</a></td>
+                <td><a id="orderid" href="{{ orders.get_order_detail_by_seller }}" style="display:block">{{orders.payment.timestamp}}</a></td>
+              </tr>
+              {% endfor %}
+              <!--Loop stop-->
+            </tbody>
+          </table>
+        </div>
+
+      </section>
+      <!--Section: Products v.3-->
+      <!--Pagination-->
+
+      {% if is_paginated %}
+      <nav class="d-flex justify-content-center wow fadeIn">
+        <ul class="pagination pg-blue">
+
+          {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          {% endif %}
+
+          <li class="page-item active">
+            <a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+
+          {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+      {% endif %}
+
+    </div>
+  </main>
+
+{% endblock content %}
+
+
